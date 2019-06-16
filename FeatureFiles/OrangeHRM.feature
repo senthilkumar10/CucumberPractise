@@ -1,3 +1,4 @@
+@SimpleLoginFeature
 Feature: This is the Login feature for Orange HRM
 Scenario: A valid user should be able to login Orange HRM
 	Given the login page of Orange HRM is launched
