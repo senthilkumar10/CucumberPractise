@@ -18,7 +18,7 @@ public class OHRMDataTableWithOutHeader {
 
 	@Given("^You are on the Login Page$")
 	public void you_are_on_the_Login_Page() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://opensource-demo.orangehrmlive.com/");

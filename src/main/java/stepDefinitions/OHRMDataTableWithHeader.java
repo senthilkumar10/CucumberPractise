@@ -19,7 +19,7 @@ public class OHRMDataTableWithHeader {
 
 	@Given("^Login to Orange HRM$")
 	public void login_to_Orange_HRM() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://opensource-demo.orangehrmlive.com/");

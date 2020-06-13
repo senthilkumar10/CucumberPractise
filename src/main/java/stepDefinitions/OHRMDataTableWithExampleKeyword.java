@@ -15,7 +15,7 @@ public class OHRMDataTableWithExampleKeyword {
 
 	@Given("^Proceed to Login$")
 	public void proceed_to_Login() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://opensource-demo.orangehrmlive.com/");

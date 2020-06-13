@@ -15,7 +15,7 @@ public class OpenGoogleDefinitions {
 	
 	@Given("^User is entering google\\.com$")
 	public void user_is_entering_google_com() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://www.google.com");

@@ -15,7 +15,7 @@ public class OrangeHRMLogin_DataParameter {
 	
 	@Given("^the login page of Orange HRM is launched successfully$")
 	public void the_login_page_of_Orange_HRM_is_launched() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://opensource-demo.orangehrmlive.com/");
