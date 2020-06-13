@@ -1,4 +1,4 @@
-@DataDrivenWithExampleKeyword
+@WebTC
 Feature: This is the Login feature for Orange HRM test
 Scenario Outline:: This is Login Scenario
 	Given Proceed to Login

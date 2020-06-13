@@ -10,7 +10,8 @@ import cucumber.api.junit.Cucumber;
 				glue= {"stepDefinitions","hooks"},
 				monochrome=true,
 				plugin= {"html:report/webreport",
-						 "json:report/JsonReport.json"}
+						 "json:report/JsonReport.json"},
+				tags = {"@WebTC"}
 				)
 
 public class Runnerclass {

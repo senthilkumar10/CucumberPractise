@@ -1,3 +1,4 @@
+@WebTC
 Feature: This is the Login feature for Orange HRM
 Scenario: This is Login Scenario
 	Given You are on the Login Page

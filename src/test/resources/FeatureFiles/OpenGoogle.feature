@@ -1,3 +1,4 @@
+@WebTC
 Feature: This is to test Google search
 Scenario: Google Search scenario
 	Given User is entering google.com
