@@ -6,12 +6,12 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="FeatureFiles",
-				glue= {"stepDefinitions", "hooks"},
+@CucumberOptions(features= "src/test/resources/FeatureFiles",
+				glue= {"stepDefinitions","hooks"},
 				monochrome=true,
 				plugin= {"html:report/webreport",
-						 "json:report/JsonReport.json"},
-				tags= {"@BackgroundExample"})
+						 "json:report/JsonReport.json"}
+				)
 
 public class Runnerclass {
 	

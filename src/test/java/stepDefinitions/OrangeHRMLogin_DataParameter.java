@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import hooks.DriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,34 +12,37 @@ import cucumber.api.java.en.When;
 
 public class OrangeHRMLogin_DataParameter {
 
-	WebDriver driver;
-	
-	@Given("^the login page of Orange HRM is launched successfully$")
-	public void the_login_page_of_Orange_HRM_is_launched() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://opensource-demo.orangehrmlive.com/");
-	}
+    WebDriver driver;
+    DriverManager driverManager;
 
-	@When("^the user enters the valid credentials \"(.*?)\" and \"(.*?)\"$")
-	public void the_user_enters_the_valid_userName_and_Password(String userName, String password) throws Throwable {
-	   driver.findElement(By.id("txtUsername")).sendKeys(userName);
-	   driver.findElement(By.id("txtPassword")).sendKeys(password);
-	}
+    public OrangeHRMLogin_DataParameter(DriverManager driverManager) {
+        this.driverManager = driverManager;
+    }
 
-	@When("^clicks the login button successfully$")
-	public void clicks_the_login_button() throws Throwable {
-		driver.findElement(By.id("btnLogin")).click();
-	}
+    @Given("^the login page of Orange HRM is launched successfully$")
+    public void the_login_page_of_Orange_HRM_is_launched() throws Throwable {
+        driver = driverManager.getDriver();
+        driver.manage().window().maximize();
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+    }
 
-	@Then("^the user should be navigated to home page successfully$")
-	public void the_user_should_be_navigated_to_home_page() throws Throwable {
-	  String text = driver.findElement(By.id("MP_link")).getAttribute("value");
-	  Assert.assertEquals("Marketplace", text);
-	  driver.quit();
-	}
+    @When("^the user enters the valid credentials \"(.*?)\" and \"(.*?)\"$")
+    public void the_user_enters_the_valid_userName_and_Password(String userName, String password) throws Throwable {
+        driver.findElement(By.id("txtUsername")).sendKeys(userName);
+        driver.findElement(By.id("txtPassword")).sendKeys(password);
+    }
 
-	
-	
+    @When("^clicks the login button successfully$")
+    public void clicks_the_login_button() throws Throwable {
+        driver.findElement(By.id("btnLogin")).click();
+    }
+
+    @Then("^the user should be navigated to home page successfully$")
+    public void the_user_should_be_navigated_to_home_page() throws Throwable {
+        String text = driver.findElement(By.id("MP_link")).getAttribute("value");
+        Assert.assertEquals("Marketplace", text);
+        driver.quit();
+    }
+
+
 }

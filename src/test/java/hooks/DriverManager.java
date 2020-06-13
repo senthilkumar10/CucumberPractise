@@ -2,8 +2,34 @@ package hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ThanosHook {
+public class DriverManager {
+
+    private WebDriver driver;
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    @Before
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
+    @After
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+
+
+	/*
 	
 	@Before
 	public void beforeScenario() {
@@ -45,7 +71,7 @@ public class ThanosHook {
 		System.out.println("This will run after Third Scenario");
 	}
 	
-	/*
+
 	  @Before(order=1) public void beforeSnapping() {
 	  System.out.println("Thanos collecting the infinity stones"); }
 	  

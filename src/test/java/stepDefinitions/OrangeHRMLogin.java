@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import hooks.DriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,34 +12,38 @@ import cucumber.api.java.en.When;
 
 public class OrangeHRMLogin {
 
-	WebDriver driver;
-	
-	@Given("^the login page of Orange HRM is launched$")
-	public void the_login_page_of_Orange_HRM_is_launched() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://opensource-demo.orangehrmlive.com/");
-	}
+    WebDriver driver;
 
-	@When("^the user enters the valid userName and Password$")
-	public void the_user_enters_the_valid_userName_and_Password() throws Throwable {
-	   driver.findElement(By.id("txtUsername")).sendKeys("Admin");
-	   driver.findElement(By.id("txtPassword")).sendKeys("admin123");
-	}
+    public OrangeHRMLogin(DriverManager driverManager) {
+        this.driverManager = driverManager;
+    }
 
-	@When("^clicks the login button$")
-	public void clicks_the_login_button() throws Throwable {
-		driver.findElement(By.id("btnLogin")).click();
-	}
+    DriverManager driverManager;
 
-	@Then("^the user should be navigated to home page$")
-	public void the_user_should_be_navigated_to_home_page() throws Throwable {
-	  String text = driver.findElement(By.id("MP_link")).getAttribute("value");
-	  Assert.assertEquals("Marketplace", text);
-	  driver.quit();
-	}
+    @Given("^the login page of Orange HRM is launched$")
+    public void the_login_page_of_Orange_HRM_is_launched() throws Throwable {
+        driver = driverManager.getDriver();
+        driver.manage().window().maximize();
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+    }
 
-	
-	
+    @When("^the user enters the valid userName and Password$")
+    public void the_user_enters_the_valid_userName_and_Password() throws Throwable {
+        driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+        driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+    }
+
+    @When("^clicks the login button$")
+    public void clicks_the_login_button() throws Throwable {
+        driver.findElement(By.id("btnLogin")).click();
+    }
+
+    @Then("^the user should be navigated to home page$")
+    public void the_user_should_be_navigated_to_home_page() throws Throwable {
+        String text = driver.findElement(By.id("MP_link")).getAttribute("value");
+        Assert.assertEquals("Marketplace", text);
+        driver.quit();
+    }
+
+
 }
